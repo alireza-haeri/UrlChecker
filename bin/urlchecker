@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+# Load logger
+source "$(dirname "$0")/../core/logger.sh"
+
+# Get url
+read -r -p "Please enter your url:" url
+
+# Check is valid url
+source "$(dirname "$0")/../core/valid-url.sh"
+check-valid-url "${url}"
+
+
+# Get count of test
+read -r -p "Please enter count of test:" count
+source "$(dirname "$0")/../core/valid-count.sh"
+check-valid-count "${count}"
+
+
+# Test url
+source "$(dirname "$0")/../core/tester.sh" "$url" "$count"
