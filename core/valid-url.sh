@@ -1,5 +1,12 @@
 #!/urs/bin/env bash
 
 check-valid-url() {
-  log "valid url: $1"
+  local url=$1
+  
+  if [[ "$url" =~ ^https?://([^/]+) ]]; then
+      log "-i" "valid url: $url"
+  else
+      log "-e" "Url is not valid!"
+      exit 1;
+  fi
 }

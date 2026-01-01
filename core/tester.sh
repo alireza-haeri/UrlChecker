@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-log "Starting test..."
+log "-i" "Starting test..."
 declare -A result
 
 for ((i=1; i<="$2";i++))
@@ -8,6 +8,6 @@ for ((i=1; i<="$2";i++))
     ((result["$code"]++))
   done
   
-source "$(dirname "${BASH_SOURCE[0]}")/writer.sh"
+. "$(dirname "${BASH_SOURCE[0]}")/writer.sh"
 
-log "Ending test..."
+log "-i" "Ending test..."

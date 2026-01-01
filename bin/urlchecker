@@ -1,21 +1,32 @@
 #!/usr/bin/env bash
 
-# Load logger
-source "$(dirname "$0")/../core/logger.sh"
+# Load Helpers
+coreDirName="$(dirname "$0")/../core"
+source "${coreDirName}/logger.sh"
+source "${coreDirName}/valid-url.sh"
+source "${coreDirName}/valid-count.sh"
 
 # Get url
-read -r -p "Please enter your url:" url
+declare url
+if [ -n "${1}" ]
+then 
+  url="${1}"
+else
+  read -r -p "Please enter your url:" url
+fi
 
 # Check is valid url
-source "$(dirname "$0")/../core/valid-url.sh"
 check-valid-url "${url}"
 
-
 # Get count of test
-read -r -p "Please enter count of test:" count
-source "$(dirname "$0")/../core/valid-count.sh"
+declare count
+if [ -n "${2}" ]
+then 
+  count="${2}"
+else
+  read -r -p "Please enter count of test:" count
+fi
 check-valid-count "${count}"
 
-
 # Test url
-source "$(dirname "$0")/../core/tester.sh" "$url" "$count"
+. "${coreDirName}/tester.sh" "$url" "$count"
