@@ -2,9 +2,18 @@
 
 # Load Helpers
 coreDirName="$(dirname "$0")/../core"
+dataDirName="$(dirname "$0")/../data"
 source "${coreDirName}/logger.sh"
 source "${coreDirName}/valid-url.sh"
 source "${coreDirName}/valid-count.sh"
+
+# Create temp file
+if [ ! -d "$dataDirName" ]
+then 
+ mkdir "$dataDirName"
+fi 
+touch "$dataDirName/result"
+cat "$dataDirName/result"
 
 # Get url
 declare url
