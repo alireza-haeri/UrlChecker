@@ -16,10 +16,6 @@ for ((i=1; i<="$2";i++))
 # Wait for requests
 wait
 
-cat "$dataDirName/result"
-  
-log "-w" "write"
-  
 # Write result
 . "$(dirname "${BASH_SOURCE[0]}")/writer.sh"
 
